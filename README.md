@@ -35,27 +35,24 @@ Key Features:
 
 ### 3. `valid_date_checker.py`
 
-This module ensures that the date inputs associated with MPINs are valid. It parses input date strings, verifies correct formatting (e.g., `DD/MM/YYYY`), and checks the logical correctness of dates (e.g., no February 30th). This helps in rejecting invalid or malformed date entries during user input validation.
+This module ensures that the date inputs associated with MPINs are valid. It parses input date strings, verifies correct formatting (e.g., `DD/MM/YYYY` or 'YYYY/MM/DD' ). This helps in rejecting invalid or malformed date entries during user input validation.
 
 Key Features:
 
 - Date parsing and format validation.
 - Logical validation of day, month, and year values.
 - Support for multiple date formats if necessary.
-- Provides boolean or exception-based feedback on validity.
 
 ---
 
 ### 4. `evaluator.py`
 
-The evaluator module is the core logic that assesses the MPIN strength and the overall validity of user inputs. It combines results from the other modules (like checking against common pins and validating dates) and implements rules to score or categorize the security of an MPIN.
+The evaluator module is the core logic that assesses the MPIN strength and the overall validity of user inputs. It uses other modules (like checking against common pins and validating dates) and implements rules to categorize the security level of an MPIN.
 
 Key Features:
 
 - Integrates with `common_pins.py` and `valid_date_checker.py`.
-- Assigns strength ratings (e.g., weak, medium, strong) to MPINs.
-- Provides detailed feedback for users on how to improve their MPIN.
-- Acts as the main decision-making unit for MPIN acceptance.
+- Provides strength ratings (e.g., weak, medium, strong) to MPINs.
 
 ---
 
@@ -66,7 +63,7 @@ The main entry point for the MPIN Checker project. This script orchestrates the 
 Key Features:
 
 - Handles user input prompts for MPIN and date values.
-- Uses the `evaluator` module to validate and rate the MPIN.
+- Uses `evaluator.find_reasons()` to validate and rate the MPIN.
 - Displays results and prompts for continuation or exit.
 - Contains the main program loop.
 - Logs every execution
@@ -92,5 +89,6 @@ Key Features:
 
 ## Testing
 
-There is a tester.py inside ./tests that runs automatically and tests 20 test cases. 
+There is a tester.py inside ./tests that runs automatically and tests 20 test cases.
+It uses the main function for running tests and logs the outputs
 *Ignore the terminal output when testing. You can verify the test results using the latest logs inside .tests/logs.xlsx*
